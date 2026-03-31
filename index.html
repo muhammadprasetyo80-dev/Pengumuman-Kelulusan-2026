@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelulusan Resmi SMK Negeri 1 Bawen 2025/2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a3d1d; /* Hijau Botol Mewah */
+            --gold: #d4af37;    /* Emas Klasik */
+            --gold-light: #f9e29d;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #051a0b;
+            background-image: radial-gradient(circle at center, #0a3d1d 0%, #051a0b 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        /* Container Utama */
+        .main-frame {
+            position: relative;
+            width: 90%;
+            max-width: 500px;
+            padding: 50px 30px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 2px; /* Kesan kaku seperti sertifikat */
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transition: all 1s ease;
+        }
+
+        /* Ornamen Sudut Emas */
+        .main-frame::before, .main-frame::after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--gold);
+        }
+        .main-frame::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+        .main-frame::after { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+        /* Typography */
+        h1, h2 {
+            font-family: 'Cinzel', serif; /* Font klasik/mewah */
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        .school-title { font-size: 20px; color: var(--gold); margin-bottom: 5px; }
+        .sub-title { font-size: 12px; text-transform: uppercase; opacity: 0.8; margin-bottom: 40px; }
+
+        /* Input Area */
+        .input-box {
+            margin-top: 20px;
+        }
+
+        input {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--gold);
+            color: var(--white);
+            font-size: 24px;
+            text-align: center;
+            width: 80%;
+            padding: 10px;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 5px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input::placeholder { color: rgba(255,255,255,0.2); letter-spacing: normal; font-size: 16px; }
+
+        .btn-verify {
+            margin-top: 40px;
+            background: var(--gold);
+            color: #000;
+            border: none;
+            padding: 15px 40px;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        }
+
+        .btn-verify:hover { background: var(--gold-light); transform: scale(1.05); }
+
+        /* Result Area */
+        #resultArea { display: none; opacity: 0; }
+
+        .celebrate-txt {
+            font-size: 14px;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .status-lulus {
+            font-size: 45px;
+            font-weight: 700;
+            color: var(--white);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .divider {
+            height: 1px;
+            width: 60%;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 20px auto;
+        }
+
+        .message {
+            font-size: 14px;
+            line-height: 1.8;
+            font-weight: 300;
+            padding: 0 20px;
+        }
+
+        /* Loading Animation */
+        .loader {
+            display: none;
+            border: 2px solid rgba(212, 175, 55, 0.1);
+            border-top: 2px solid var(--gold);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    </style>
+</head>
+<body>
+
+    <div class="main-frame" id="contentFrame">
+        <h1 class="school-title">SMK NEGERI 1 BAWEN</h1>
+        <p class="sub-title">Pengumuman Kelulusan 2025/2026</p>
+
+        <div id="loginSection">
+            <div class="input-box">
+                <input type="text" id="nisnInput" placeholder="Masukkan NISN Anda" maxlength="10">
+            </div>
+            <div class="loader" id="loader"></div>
+            <button class="btn-verify" id="btnVerify" onclick="verifyStatus()">VERIFIKASI DATA</button>
+        </div>
+
+        <div id="resultArea">
+            <p class="celebrate-txt">DENGAN BANGGA MENYATAKAN</p>
+            <div class="divider"></div>
+            <h1 class="status-lulus">LULUS</h1>
+            <div class="divider"></div>
+            <p class="message">
+                Selamat atas keberhasilan Anda menyelesaikan pendidikan di SMK Negeri 1 Bawen. 
+                Semoga ilmu yang didapat menjadi bekal berharga untuk masa depan yang gemilang.
+            </p>
+            <p style="font-size: 11px; margin-top: 30px; opacity: 0.5;">Sistem Informasi Kelulusan Digital SMKN 1 Bawen</p>
+        </div>
+    </div>
+
+    <script>
+        // URL Database Anda
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxh3Ly1b0Nj2brz0O-yJ9Qd3BSAwQ2gWA6662CLRR8NTQOWQzguE18_XBEKcUXvPy0m/exec";
+
+        async function verifyStatus() {
+            const input = document.getElementById('nisnInput');
+            const nisn = input.value;
+            const btn = document.getElementById('btnVerify');
+            const loader = document.getElementById('loader');
+            const loginSection = document.getElementById('loginSection');
+            const resultArea = document.getElementById('resultArea');
+
+            if (nisn.length !== 10 || isNaN(nisn)) {
+                alert("Mohon masukkan 10 digit NISN yang valid.");
+                return;
+            }
+
+            // UI Progress
+            btn.style.display = 'none';
+            loader.style.display = 'block';
+
+            try {
+                const response = await fetch(`${SCRIPT_URL}?nisn=${nisn}`);
+                const status = await response.text();
+
+                if (status.trim() === "LULUS") {
+                    // Animasi Transisi Mewah
+                    loginSection.style.opacity = '0';
+                    setTimeout(() => {
+                        loginSection.style.display = 'none';
+                        resultArea.style.display = 'block';
+                        resultArea.style.animation = 'fadeInUp 1.5s forwards';
+                        
+                        // Menambah efek cahaya pada frame saat lulus
+                        document.getElementById('contentFrame').style.boxShadow = "0 0 50px rgba(212, 175, 55, 0.3)";
+                    }, 600);
+                } else {
+                    alert("Data NISN tidak ditemukan. Silakan hubungi bagian administrasi sekolah.");
+                    btn.style.display = 'inline-block';
+                    loader.style.display = 'none';
+                }
+            } catch (error) {
+                alert("Gagal memverifikasi. Periksa koneksi internet Anda.");
+                btn.style.display = 'inline-block';
+                loader.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
